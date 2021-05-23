@@ -30,6 +30,13 @@
 
         [HideInInspector]
         public Animator anim;
+
+        public delegate void OnTakeDamage (float amount);
+        public OnTakeDamage onTakeDamage;
+
+        public delegate void OnDeath(string characterID);
+        public OnDeath onDeath;
+
         private void Awake()
         {
             maxHealth = Calculate_MaxHealth();
@@ -62,8 +69,11 @@
             damage = Mathf.Clamp(damage, 0, int.MaxValue);
             currentHealth -= damage;
 
-            Instantiate(floatingTextPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity).GetComponent<FloatingText>().Setup(damage.ToString(), floatingTextSpawnPoint.position);
-            Debug.Log(transform.name + " takes " + damage + " damage");
+            if (onTakeDamage != null)
+            {
+                onTakeDamage?.Invoke(damage);
+            }
+            //Instantiate(floatingTextPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity).GetComponent<FloatingText>().Setup(damage.ToString(), floatingTextSpawnPoint.position);
 
             if (currentHealth <= 0)
             {
@@ -84,14 +94,18 @@
 
         public virtual void Die()
         {
-            Debug.Log(transform.name + " died");
             if (anim != null)
             {
                 anim.SetTrigger("Death");
             }
+            /*
             if (characterIdentifier.ToLower() != "player")
             {
                 QuestController.Instance.QuestAction(Quest.Objective.Type.Kill, characterIdentifier, 1);
+            }*/
+            if (onDeath != null)
+            {
+                onDeath(characterIdentifier);
             }
         }
 
