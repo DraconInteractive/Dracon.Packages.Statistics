@@ -27,10 +27,11 @@
             myTarget.damage = EditorGUILayout.FloatField("Damage: ", myTarget.damage);
             myTarget.armour = EditorGUILayout.FloatField("Armour: ", myTarget.armour);
 
-            Vector3 resourceStats = EditorGUILayout.Vector3Field("Resources Max (HMS): ", new Vector3(myTarget.maxHealth, myTarget.maxMana, myTarget.maxStamina));
+            Vector4 resourceStats = EditorGUILayout.Vector4Field("Resources Max (HMS): ", new Vector3(myTarget.maxHealth, myTarget.maxMana, myTarget.maxStamina, myTarget.maxResource));
             myTarget.maxHealth = resourceStats.x;
             myTarget.maxMana = resourceStats.y;
             myTarget.maxStamina = resourceStats.z;
+            myTarget.maxResource = resourceStats.z;
 
             Vector3 sdc = EditorGUILayout.Vector3Field("STR, DEX, CON: ", new Vector3(myTarget.STR, myTarget.DEX, myTarget.CON));
             myTarget.STR = sdc.x;

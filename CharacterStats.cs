@@ -18,6 +18,9 @@
         public float maxStamina;
         public float currentStamina { get; private set; }
 
+        public float maxResource;
+        public float currentResource { get; private set; }
+
         public float STR, DEX, WIS, INT, CON, LUCK, WILL;
 
         public float damage;
