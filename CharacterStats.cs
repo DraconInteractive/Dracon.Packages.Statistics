@@ -7,9 +7,6 @@
 
     public class CharacterStats : MonoBehaviour
     {
-        public GameObject floatingTextPrefab;
-        public Transform floatingTextSpawnPoint;
-
         public string characterIdentifier;
 
         public float maxHealth;
@@ -73,7 +70,6 @@
             {
                 onTakeDamage?.Invoke(damage);
             }
-            //Instantiate(floatingTextPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity).GetComponent<FloatingText>().Setup(damage.ToString(), floatingTextSpawnPoint.position);
 
             if (currentHealth <= 0)
             {
@@ -98,11 +94,7 @@
             {
                 anim.SetTrigger("Death");
             }
-            /*
-            if (characterIdentifier.ToLower() != "player")
-            {
-                QuestController.Instance.QuestAction(Quest.Objective.Type.Kill, characterIdentifier, 1);
-            }*/
+
             if (onDeath != null)
             {
                 onDeath(characterIdentifier);
