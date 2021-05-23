@@ -13,9 +13,6 @@
             //base.OnInspectorGUI();
             CharacterStats myTarget = (CharacterStats)target;
 
-            myTarget.floatingTextPrefab = (GameObject)EditorGUILayout.ObjectField("Floating Text Prefab:", myTarget.floatingTextPrefab, typeof(GameObject), false);
-            myTarget.floatingTextSpawnPoint = (Transform)EditorGUILayout.ObjectField("Floating Text Spawn:", myTarget.floatingTextSpawnPoint, typeof(Transform), true);
-
             myTarget.characterIdentifier = EditorGUILayout.TextField("ID: ", myTarget.characterIdentifier);
 
             EditorGUILayout.Space();
