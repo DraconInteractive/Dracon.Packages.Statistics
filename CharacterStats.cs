@@ -9,16 +9,46 @@
     {
         public string characterIdentifier;
 
-        public float maxHealth;
+        public int level;
+
+        public float MaxHealth
+        {
+            get
+            {
+                return ((3 * CON) + (1.5f * STR)) * (1.1f * level);
+            }
+        }
         public float currentHealth { get; private set; }
 
-        public float maxMana;
+        public float MaxMana
+        {
+            get
+            {
+                return ((3 * CON) + (1.5f * STR)) * (1.1f * level);
+
+            }
+        }
+
         public float currentMana { get; private set; }
 
-        public float maxStamina;
+        public float MaxStamina
+        {
+            get
+            {
+                return ((3 * CON) + (1.5f * STR)) * (1.1f * level);
+            }
+        }
+
         public float currentStamina { get; private set; }
 
-        public float maxResource;
+        public float MaxResource
+        {
+            get
+            {
+                return ((3 * CON) + (1.5f * STR)) * (1.1f * level);
+            }
+        }
+
         public float currentResource { get; private set; }
 
         public float STR, DEX, WIS, INT, CON, LUCK, WILL;
@@ -37,30 +67,26 @@
         public delegate void OnDeath(string characterID);
         public OnDeath onDeath;
 
-        private void Awake()
+        protected virtual void Awake()
         {
-            maxHealth = Calculate_MaxHealth();
-            currentHealth = maxHealth;
+            if (level == 0)
+            {
+                level = 1;
+            }
+            currentHealth = MaxHealth;
+            currentMana = MaxMana;
+            currentStamina = MaxStamina;
+            currentResource = MaxResource;
         }
 
-        private void Start()
+        protected virtual void Start()
         {
-            VStart();
+            
         }
 
-        public virtual void VStart()
+        protected virtual void Update()
         {
-
-        }
-
-        private void Update()
-        {
-            VUpdate();
-        }
-
-        public virtual void VUpdate()
-        {
-
+            
         }
 
         public virtual void TakeDamage(float damage)
@@ -102,11 +128,6 @@
             {
                 onDeath(characterIdentifier);
             }
-        }
-
-        float Calculate_MaxHealth()
-        {
-            return (3 * CON) + (1.5f * STR);
         }
     }
 }
