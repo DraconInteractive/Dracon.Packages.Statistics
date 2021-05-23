@@ -24,7 +24,7 @@
         {
             get
             {
-                return ((3 * CON) + (1.5f * STR)) * (1.1f * level);
+                return ((1.5f * WIS) + (1.5f * INT)) * (1.1f * level);
 
             }
         }
@@ -35,7 +35,7 @@
         {
             get
             {
-                return ((3 * CON) + (1.5f * STR)) * (1.1f * level);
+                return ((1.5f * STR) + (1.5f * DEX)) * (1.1f * level);
             }
         }
 
@@ -45,7 +45,7 @@
         {
             get
             {
-                return ((3 * CON) + (1.5f * STR)) * (1.1f * level);
+                return ((1.5f * STR) + (1.5f * WIS)) * (1.1f * level);
             }
         }
 
