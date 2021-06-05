@@ -117,6 +117,11 @@
             }
         }
 
+        public virtual void BuffHealth (float amount)
+        {
+            currentHealth += amount;
+        }
+
         public virtual void Die()
         {
             if (anim != null)
