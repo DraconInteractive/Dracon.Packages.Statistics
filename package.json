@@ -10,5 +10,10 @@
     "level",
     "unity"
   ],
+  "author": {
+    "name": "Dracon Interactive",
+    "email": "draconinteractive@gmail.com",
+    "url": "http://www.draconinteractive.com.au"
+  },
   "category": "Unity"
 }
